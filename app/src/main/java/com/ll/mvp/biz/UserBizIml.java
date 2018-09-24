@@ -1,14 +1,14 @@
 package com.ll.mvp.biz;
 
-import com.ll.mvp.Listener.LoginListener;
-import com.ll.mvp.Listener.RegisterListener;
+import com.ll.mvp.login.LoginListener;
+import com.ll.mvp.register.RegisterListener;
 import com.ll.mvp.bean.User;
 
 /**
  * 请求接口实现，网络请求业务逻辑类
  * Created by LiLei on 2017/7/3.Go.
  */
-public class UserBizIml implements UserBiz {
+public class UserBizIml implements IUserBiz {
 
     @Override
     public void login(String name, String password, LoginListener listener) {

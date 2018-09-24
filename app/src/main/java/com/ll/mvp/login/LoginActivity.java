@@ -1,4 +1,4 @@
-package com.ll.mvp;
+package com.ll.mvp.login;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,12 +6,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ll.mvp.R;
 import com.ll.mvp.base.BaseActivity;
 import com.ll.mvp.bean.User;
-import com.ll.mvp.presenter.LoginPresenter;
-import com.ll.mvp.view.LoginView;
 
-public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> implements LoginView {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginView {
     private EditText name_et, password_et;
     private String name, password;
     private Button login_btn;
@@ -44,11 +43,6 @@ public class LoginActivity extends BaseActivity<LoginView, LoginPresenter> imple
 
     }
 
-    @Override
-    public LoginPresenter initPresenter() {
-        //在此声明是这个activity的presenter
-        return new LoginPresenter();
-    }
 
     public String getName() {
         return name;

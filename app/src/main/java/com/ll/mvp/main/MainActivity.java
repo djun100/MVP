@@ -1,13 +1,14 @@
-package com.ll.mvp;
+package com.ll.mvp.main;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.ll.mvp.R;
 import com.ll.mvp.base.BaseActivity;
-import com.ll.mvp.presenter.RegisterPresenter;
-import com.ll.mvp.view.RegisterView;
+import com.ll.mvp.register.RegisterPresenter;
+import com.ll.mvp.register.RegisterView;
 
-public class MainActivity extends BaseActivity<RegisterView, RegisterPresenter> implements RegisterView {
+public class MainActivity extends BaseActivity<RegisterPresenter> implements RegisterView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,10 +18,6 @@ public class MainActivity extends BaseActivity<RegisterView, RegisterPresenter> 
        /* presenter.register();*/
     }
 
-    @Override
-    public RegisterPresenter initPresenter() {
-        return new RegisterPresenter();
-    }
 
     @Override
     public String getName() {

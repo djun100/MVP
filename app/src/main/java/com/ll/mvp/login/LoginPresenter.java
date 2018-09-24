@@ -1,14 +1,12 @@
-package com.ll.mvp.presenter;
+package com.ll.mvp.login;
 
 import android.os.Handler;
 import android.os.Looper;
 
-import com.ll.mvp.Listener.LoginListener;
-import com.ll.mvp.base.NewBasePresenter;
+import com.ll.mvp.base.BasePresenter;
 import com.ll.mvp.bean.User;
-import com.ll.mvp.biz.UserBiz;
+import com.ll.mvp.biz.IUserBiz;
 import com.ll.mvp.biz.UserBizIml;
-import com.ll.mvp.view.LoginView;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -20,19 +18,23 @@ import io.reactivex.disposables.Disposable;
  * 登录presenter
  * Created by LiLei on 2017/7/3.Go.
  */
-public class LoginPresenter extends NewBasePresenter<LoginView> {
-    private UserBiz biz;
+public class LoginPresenter extends BasePresenter<LoginView,IUserBiz> {
     private Handler handler;
 
     public LoginPresenter() {
-        biz = new UserBizIml();
+
         handler = new Handler(Looper.getMainLooper());
+    }
+
+    @Override
+    protected IUserBiz newModel() {
+        return new UserBizIml();
     }
 
     //实际逻辑实现
     public void login() {
 
-        biz.login(getMvpView().getName(), getMvpView().getPassword(), new LoginListener() {
+        mModel.login(getMvpView().getName(), getMvpView().getPassword(), new LoginListener() {
             @Override
             public void loginSuccess(final User user) {
                 /*handler.post(new Runnable() {
